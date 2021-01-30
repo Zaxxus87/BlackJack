@@ -3,6 +3,36 @@ from pygame.locals import *
 import os
 
 class Card():
+    """
+    This class represents an individual playing card
+
+    ...
+
+    Attributes
+    -----------------
+    rank : str
+        a string representing the rank of a card (ex. ACE)
+        strings are usually all caps
+    point_value : int
+        an integer representing the point value of the card
+    suit : str
+        a string representing the suit of a card (ex. SPADES)
+        strings are usually all caps
+    up : boolean
+        when true card's face is assigned as its image
+        when false the back image us assigned
+    back_image : jpg object
+        card back image - standard for every card
+    front_image : jpg object
+        card's face imaged based on its rank/suit value
+    
+    Methods
+    ---------
+    draw(surface object, int, int)
+        draws the card image on surface provides as a parameter
+        draws card at location provided byt the 2 int cordinats
+
+    """
 
     def __init__(self, rank, suit, point_value):
         self.rank = rank
@@ -123,16 +153,28 @@ class Card():
 
     
     def __str__(self):
+        """
+            displays the suit, rank, and point value of the card
+            (ex. ACE of SPADES (Value = 11))
+        """
         return '{} of {} (Value = {})'.format(
             self.rank,self.suit,self.point_value)
 
     def draw(self,win,x,y):
+        """
+            draws the card on a provided surface and provided location
+            requires 3 arguments: a surface object, 2 integers that are the x and y coordinates
+            logic determins if it draws front or back images 
+        """
         if self.up:
             win.blit(self.front_image,(x,y))
         else:
             win.blit(self.back_image, (x,y))
 
     def flip(self):
+        """
+            changes the truth value of what side of the card is displayed
+        """
         if self.up:
             self.up = False
         else:
