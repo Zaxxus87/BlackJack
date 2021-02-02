@@ -1,18 +1,37 @@
 import pygame, sys
 from pygame.locals import *
 from Card import *
+from Deck import *
 
+def game():
+    px = 210
+    dx = 210
+    for i in p_hand:
+        i.draw(screen,px,350)
+        px += 30
+    for i in d_hand:
+        i.draw(screen,dx,100)
+        dx += 30
+    
 pygame.init()
 screen = pygame.display.set_mode((800,600))
 
-card_one = Card("ACE","SPADES",11)
-card_two = Card("TEN","CLUBS",2)
+deck = Deck()
+p_hand = []
+d_hand = []
 
+for x in range (2):
+    p_hand.append(deck.draw())
+    d_hand.append(deck.draw())
+d_hand[0].flip()
+    
 end = True
 while end:
     screen.fill((255,255,255))
-    card_one.draw(screen,250,350)
-    card_two.draw(screen,290,350)
+
+    game()
+
+    
     pygame.display.update()
             
     for event in pygame.event.get():
