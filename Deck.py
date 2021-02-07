@@ -15,7 +15,7 @@ class Deck():
         self.discard_pile = []
         ranks = ['ACE', 'TWO', 'THREE', 'FOUR', 'FIVE', 'SIX','SEVEN',
                  'EIGHT', 'NINE', 'TEN', 'JACK', 'QUEEN', 'KING']
-        points = [1,2,3,4,5,6,7,8,9,10,10,10,10]
+        points = [11,2,3,4,5,6,7,8,9,10,10,10,10]
         suits = ['SPADES', 'HEARTS', 'DIAMONDS', 'CLUBS']
 
         for x in range (len(ranks)):
